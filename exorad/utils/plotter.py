@@ -13,7 +13,7 @@ from exorad.log import setLogLevel
 
 mpl_logger = logging.getLogger("matplotlib")
 mpl_logger.setLevel(logging.WARNING)
-cmap = matplotlib.cm.get_cmap("Set1")
+cmap = matplotlib.plt.get_cmap("Set1")
 
 
 class Plotter(Logger):
