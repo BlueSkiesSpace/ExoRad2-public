@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "exorad"
-version = "2.1.121"
+version = "2.1.122"
 description = "The generic point source radiometric model"
 authors = ["Lorenzo V. Mugnai <lorenzo.mugnai@uniroma1.it>"]
 license = "BSDv3"
