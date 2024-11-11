@@ -49,7 +49,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import datetime
 
 import h5py
-import hdfdict
 from astropy.table import meta
 
 from exorad import __author__
@@ -256,6 +255,7 @@ def load(input_group):
     -------
     dict
     """
-    input_group = hdfdict.load(input_group, lazy=False)
+    from .hdf5dict import load
+    input_group = load(input_group, lazy=False)
     input_group = recursively_read_dict_contents(input_group)
     return input_group
