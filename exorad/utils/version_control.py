@@ -19,7 +19,7 @@ class VersionControl(Logger):
         super().__init__()
 
         self.current_version = current_version
-        if self._check_internet():
+        if False:
             self.content = self.get_content(package_url)
             if self.content:
                 message, new_ver = self.get_message()

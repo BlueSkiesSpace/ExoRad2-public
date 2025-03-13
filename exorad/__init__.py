@@ -3,12 +3,12 @@ import os.path
 from datetime import date
 
 # load package info
-__pkg_name__ = metadata.metadata("exorad")["Name"]
-__url__ = metadata.metadata("exorad")["Project-URL"]
-__author__ = metadata.metadata("exorad")["Author"]
-__email__ = metadata.metadata("exorad")["Author_email"]
-__license__ = metadata.metadata("exorad")["license"]
-__summary__ = metadata.metadata("exorad")["Summary"]
+__pkg_name__ = metadata.metadata("exorad").get("Name")
+__url__ = metadata.metadata("exorad").get("Project-URL")
+__author__ = metadata.metadata("exorad").get("Author")
+__email__ = metadata.metadata("exorad").get("Author_email")
+__license__ = metadata.metadata("exorad").get("license")
+__summary__ = metadata.metadata("exorad").get("Summary")
 
 # load package commit number
 try:
@@ -18,9 +18,7 @@ except NameError:
 
 __commit__ = None
 __branch__ = None
-if __base_dir__ is not None and os.path.exists(
-    os.path.join(__base_dir__, ".git")
-):
+if __base_dir__ is not None and os.path.exists(os.path.join(__base_dir__, ".git")):
     git_folder = os.path.join(__base_dir__, ".git")
     with open(os.path.join(git_folder, "HEAD")) as fp:
         ref = fp.read().strip()
