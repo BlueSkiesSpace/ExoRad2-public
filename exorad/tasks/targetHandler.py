@@ -232,12 +232,10 @@ class ObserveTarget(Task):
             EstimateForegrounds,
             PropagateForegroundLight,
             EstimateNoise,
-            LoadSource,
         )
 
         prepareTarget = PrepareTarget()
         propagateTargetLight = PropagateTargetLight()
-        loadSource = LoadSource()
         estimateForegrounds = EstimateForegrounds()
         propagateForegroundLight = PropagateForegroundLight()
         estimateNoise = EstimateNoise()
@@ -252,11 +250,7 @@ class ObserveTarget(Task):
             )
         target = propagateForegroundLight(channels=channels, target=target)
 
-        target, sed = loadSource(
-            target=target,
-            source=payload["common"]["sourceSpectrum"],
-            wl_range=(wl_min, wl_max),
-        )
+    
         target = propagateTargetLight(channels=channels, target=target)
 
         target = estimateNoise(target=target, channels=channels)
