@@ -4,6 +4,13 @@
 Installation & updates
 =======================
 
+Installing from PyPi
+---------------------
+
+You can install it simply by doing::
+
+    pip install exorad
+
 Installing from git
 -------------------
 You can clone ExoRad from our main git repository::
@@ -14,9 +21,15 @@ Move into the ExoRad folder::
 
     cd /your_path/ExoRad
 
-Then, just do::
+ExoRad uses **Poetry** for dependency management and package installation. If you haven't installed Poetry yet, you can do so by running the following command::
 
-    pip install .
+    pip install poetry
+
+For more details, refer to the [official Poetry documentation](https://python-poetry.org/docs/#installation).
+
+Once Poetry is installed, you can proceed with installing ExoRad::
+
+    poetry install
 
 To test for correct setup you can do::
 

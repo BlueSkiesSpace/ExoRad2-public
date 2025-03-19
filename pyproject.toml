@@ -1,31 +1,57 @@
 [tool.poetry]
 name = "exorad"
-version = "2.1.122"
+version = "2.1.127"
 description = "The generic point source radiometric model"
-authors = ["Lorenzo V. Mugnai <lorenzo.mugnai@uniroma1.it>"]
-license = "BSDv3"
+authors = ["Lorenzo V. Mugnai <lorenzo.mugnai@uniroma1.it>", "Enzo Pascale"]
+license = "BSD-3-Clause"
 readme = "README.md"
+homepage = "https://github.com/ExObsSim/ExoRad2-public"
+repository = "https://github.com/ExObsSim/ExoRad2-public"
+documentation = "https://exorad2-public.readthedocs.io/en/latest/" 
+
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: POSIX",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Unix",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development :: Libraries",
+]
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.13"
+python = ">=3.10,<3.11"
 astropy = "^5.3.3"
 mpmath = "^1.3.0"
 numpy = "^1.26.0"
 matplotlib = "^3.8.0"
-scipy = ">=1.11.3,<1.14"
+scipy = "^1.13.1"
 h5py = "^3.9.0"
 xlrd = "1.2.0"
 xlwt = "^1.3.0"
 requests = "^2.31.0"
 photutils = "^1.9.0"
-pandas = "^2.1.1"
+pandas = "^2.2.2"
 
-
-[tool.poetry.group.dev.dependencies]
+[tool.poetry.dev-dependencies]
+sphinx = "*"
+sphinxcontrib-napoleon = "*"
+sphinxcontrib-jsmath = "*"
+nbsphinx = "*"
+sphinx_rtd_theme = "*"
 codecov = "^2.1.13"
 flake8 = "^6.1.0"
 pytest = "^7.4.2"
 commitizen = "^3.29.0"
+
+[tool.poetry.scripts]
+exorad = "exorad.exorad:main"
+exorad-plot = "exorad.utils.plotter:main"  
 
 [build-system]
 requires = ["poetry-core"]
@@ -38,3 +64,6 @@ version_scheme = "semver2"
 version_provider = "poetry"
 update_changelog_on_bump = true
 major_version_zero = false
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

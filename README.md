@@ -5,7 +5,8 @@
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![ASCL.net](https://img.shields.io/badge/ascl-2210.006-blue.svg?colorB=262255)](https://ascl.net/2210.006)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8367214.svg)](https://doi.org/10.5281/zenodo.8367214)
-[![status](https://joss.theoj.org/papers/d770a319b30cf50ef5a48ed9cebbfd57/status.svg)](https://joss.theoj.org/papers/d770a319b30cf50ef5a48ed9cebbfd57)
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.05348/status.svg)](https://doi.org/10.21105/joss.05348)
+
 
 # ExoRad 2.0: The generic point source radiometric model
 
@@ -24,9 +25,9 @@ As an example, for each target and for each photometric and spectroscopic channe
 8) sky foreground
 
 ### Cite
-ExoRad has been developed from ArielRad. 
 If you use this software please cite:
-Mugnai et al, "ArielRad: the ARIEL radiometric model", 2020 ([doi: 10.1007/s10686-020-09676-7](https://link.springer.com/article/10.1007%2Fs10686-020-09676-7))
+Mugnai et al., (2023). ExoRad 2.0: The generic point source radiometric model. Journal of Open Source Software, 8(89), 5348, ([doi: 10.21105/joss.05348](https://doi.org/10.21105/joss.05348))
+
 
 ## Installation
 ### Installing from PyPi
@@ -38,10 +39,19 @@ You can install it by doing
 Clone the directory using:
 
     git clone https://github.com/ExObsSim/ExoRad2-public
-Move into the `ExoRad2` folder.
-Then install
 
-    pip install .
+Move into the `ExoRad2` folder.
+
+ExoRad uses **Poetry** for dependency management and package installation. If you haven't installed Poetry yet, you can do so by running the following command:
+
+    pip install poetry
+
+For more details, refer to the [official Poetry documentation](https://python-poetry.org/docs/#installation).
+
+Once Poetry is installed, you can proceed with installing ExoRad:
+
+    poetry install
+
 
 ## Run
 Once Exorad is installed in your system you can run it from console. 
