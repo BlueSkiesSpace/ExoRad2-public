@@ -116,8 +116,8 @@ def convolve_with_slit(
 
 def integrate_light(radiance, wl_qe, ch_built_instr):
     logger.debug("sed : {}".format(radiance.data))
-    signal_tmp = np.trapz(radiance.data, x=wl_qe).to(u.count / u.s)
-    # signal_tmp = (np.trapz(radiance.data[~np.isnan(radiance.data)], x=wl_qe[~np.isnan(radiance.data)])).to(
+    signal_tmp = np.trapezoid(radiance.data, x=wl_qe).to(u.count / u.s)
+    # signal_tmp = (np.trapezoid(radiance.data[~np.isnan(radiance.data)], x=wl_qe[~np.isnan(radiance.data)])).to(
     #     u.count / u.s)
     signal = signal_tmp * np.asarray(ch_built_instr["window_size_px"])
     max_signal_per_pix = signal_tmp * np.ones_like(
