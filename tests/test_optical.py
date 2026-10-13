@@ -167,7 +167,7 @@ class InstrumentDiffuseLightTest(unittest.TestCase):
         detector_radiance *= D ** 2 * np.pi * u.sr * qe * (
                     wl_grid / const.c / const.h).to(
             1. / u.W / u.s) * u.count
-        detector_signal = (np.trapz(detector_radiance, x=wl_grid)).to(
+        detector_signal = (np.trapezoid(detector_radiance, x=wl_grid)).to(
             u.count / u.s)
         check_table['detector signal'] = detector_signal * Windows
 
@@ -182,7 +182,7 @@ class InstrumentDiffuseLightTest(unittest.TestCase):
         optics_radiance *= D ** 2 * (np.pi * u.sr - omega_pix) * qe * (
                     wl_grid / const.c / const.h).to(
             1. / u.W / u.s) * u.count
-        optics_signal = (np.trapz(optics_radiance, x=wl_grid)).to(
+        optics_signal = (np.trapezoid(optics_radiance, x=wl_grid)).to(
             u.count / u.s)
         check_table['optics signal'] = optics_signal * Windows
 
@@ -193,7 +193,7 @@ class InstrumentDiffuseLightTest(unittest.TestCase):
         M6_radiance *= D ** 2 * omega_pix * qe * (
                     wl_grid / const.c / const.h).to(
             1. / u.W / u.s) * u.count
-        M6_signal = (np.trapz(M6_radiance, x=wl_grid)).to(
+        M6_signal = (np.trapezoid(M6_radiance, x=wl_grid)).to(
             u.count / u.s)
         check_table['M6 signal'] = M6_signal * Windows
 
