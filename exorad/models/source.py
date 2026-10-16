@@ -222,7 +222,7 @@ class Star(Logger):
         wl = wl[idx]
         sed = sed[idx]
         # Normalise SED to observed SED
-        bolometric_flux = np.trapz(sed, x=wl)  # [W m**-2]
+        bolometric_flux = np.trapezoid(sed, x=wl)  # [W m**-2]
         bolometric_luminosity = (
             4 * np.pi * star_radius**2 * bolometric_flux
         )  # [W]
@@ -240,7 +240,7 @@ class Star(Logger):
     ):
         omega_star = np.pi * (star_radius / star_distance) ** 2 * u.sr
         sed = omega_star * exolib.planck(wl, star_temperature)
-        bolometric_flux = np.trapz(sed, x=wl)
+        bolometric_flux = np.trapezoid(sed, x=wl)
         bolometric_luminosity = (
             4.0 * np.pi * star_distance**2 * bolometric_flux
         )
@@ -254,7 +254,7 @@ class CustomSed(Logger):
         ph_wl = ph["Wavelength"].data * ph["Wavelength"].unit
         ph_sed = ph["Sed"].data * ph["Sed"].unit
 
-        bolometric_flux = np.trapz(ph_sed, x=ph_wl)  # [W m**-2]
+        bolometric_flux = np.trapezoid(ph_sed, x=ph_wl)  # [W m**-2]
         bolometric_luminosity = (
             4 * np.pi * (star_radius.to(u.m)) ** 2 * bolometric_flux
         )  # [W]

@@ -152,7 +152,7 @@ class Photometer(Instrument):
             )
             transmission[idx] = wave_window[idx] = 0.0
 
-        star_flux = np.trapz(
+        star_flux = np.trapezoid(
             wave_window * target.star.sed.data, x=target.star.sed.wl_grid
         ).to(u.W / u.m**2)
         out["starFlux"] = [star_flux.value] * star_flux.unit
@@ -160,7 +160,7 @@ class Photometer(Instrument):
 
         star_signal = (
             self.payload["optics"]["Atel"]["value"]
-            * np.trapz(
+            * np.trapezoid(
                 qe
                 * target.star.sed.data
                 * transmission

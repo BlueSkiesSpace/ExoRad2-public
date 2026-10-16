@@ -87,8 +87,8 @@ def rebin(x, xp, fp):
         )
 
     #    idx = np.where(np.logical_and(xp >= x.min(), xp <= x.max()))[0]
-    #    print np.trapz(fp[idx], x=xp[idx])
-    #    print np.trapz(new_f, x=x)
+    #    print np.trapezoid(fp[idx], x=xp[idx])
+    #    print np.trapezoid(new_f, x=x)
     #    asd
     else:
         logger.debug("interpolating")
@@ -257,7 +257,19 @@ def binnedPSF(
     fk_x, ik_x = np.modf(k_x)
     fk_y, ik_y = np.modf(k_y)
 
-    kernel = np.ones((int(ik_y) + 2, int(ik_x) + 2)) * fk_x.unit
+    kernel_shape_0 = 2
+    kernel_shape_1 = 2
+    if ik_y.isscalar:
+        kernel_shape_0 += int(ik_y.value)
+    else:
+        kernel_shape_0 += int(ik_y[0].value)
+
+    if ik_x.isscalar:
+        kernel_shape_1 += int(ik_x.value)
+    else:
+        kernel_shape_1 += int(ik_x[0].value)
+
+    kernel = np.ones((kernel_shape_0, kernel_shape_1)) * fk_x.unit
     kernel[:, 0] *= 0.5 * fk_x
     kernel[:, -1] *= 0.5 * fk_x
     kernel[0, :] *= 0.5 * fk_y

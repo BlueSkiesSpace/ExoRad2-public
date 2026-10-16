@@ -223,7 +223,7 @@ class Instrument(Logger):
                     * u.count
                 )
                 # try:
-                #     signal = np.trapz(radiance.data * self._window_function(radiance), x=radiance.wl_grid).to(u.ct / u.s)
+                #     signal = np.trapezoid(radiance.data * self._window_function(radiance), x=radiance.wl_grid).to(u.ct / u.s)
                 #     signal *= self.built_instr['window_spatial_width']
                 # except KeyError:
                 max_signal_per_pix, signal = integrate_light(

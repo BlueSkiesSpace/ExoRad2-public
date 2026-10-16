@@ -375,13 +375,13 @@ class Spectrometer(Instrument):
         flux_density = wave_window * target.star.sed.data
         self.debug("star flux density: {}".format(flux_density))
 
-        star_flux = np.trapz(
+        star_flux = np.trapezoid(
             flux_density * window_function, x=target.star.sed.wl_grid.to(u.um)
         ).to(u.W / u.m**2)
         self.debug("star flux : {}".format(star_flux))
         out["starFlux"] = star_flux
 
-        star_signal = np.trapz(
+        star_signal = np.trapezoid(
             signal_density.data * window_function, x=target.star.sed.wl_grid
         ).to(u.count / u.s)
         self.debug("star signal : {}".format(star_signal))
